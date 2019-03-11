@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ImmersiveScreenTheme" parent="AppTheme">
+        <!-- 透明状态栏 -->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="FullScreenTheme" parent="AppTheme">
+        <!-- 全屏显示 -->
+        <item name="android:windowFullscreen">true</item>
+        <!-- 背景 -->
+        <item name="android:windowBackground">@mipmap/bg</item>
+        <!-- 透明导航栏 -->
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+</resources>

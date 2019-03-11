@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="ImmersiveScreenTheme" parent="AppTheme">
+        <!-- 透明状态栏 -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- 状态栏颜色，解决Android 5.0以上状态栏半透明遮罩 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
