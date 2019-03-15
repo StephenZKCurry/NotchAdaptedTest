@@ -29,7 +29,7 @@ public class ImmersiveActivity extends AppCompatActivity {
 //            getWindow().addFlags(
 //                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        }
-        // 去掉状态栏的蒙层
+        // 解决部分手机设置透明状态栏后显示的蒙层问题
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             // 设置状态栏背景时不能同时设置FLAG_TRANSLUCENT_STATUS

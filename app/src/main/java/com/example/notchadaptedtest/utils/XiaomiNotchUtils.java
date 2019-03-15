@@ -25,13 +25,13 @@ public class XiaomiNotchUtils {
      * @param context
      * @return true：有刘海屏；false：没有刘海屏
      */
-    public static boolean hasNotchAtXiaomi(Context context) {
+    public static boolean hasNotch(Context context) {
         boolean ret = false;
         try {
             ClassLoader cl = context.getClassLoader();
             Class SystemProperties = cl.loadClass("android.os.SystemProperties");
-            Method get = SystemProperties.getMethod("hasNotchInScreen");
-            ret = (int) get.invoke(SystemProperties, "ro.miui.notch", 0) == 1;
+            Method get = SystemProperties.getMethod("getInt", String.class, int.class);
+            ret = (Integer) get.invoke(SystemProperties, "ro.miui.notch", 0) == 1;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -70,21 +70,6 @@ public class XiaomiNotchUtils {
     }
 
     /**
-     * 获取状态栏高度
-     *
-     * @param context
-     * @return
-     */
-    public static int getStatusBarHeight(Context context) {
-        int statusBarHeight = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
-        }
-        return statusBarHeight;
-    }
-
-    /**
      * 设置应用窗口在刘海屏手机使用刘海区
      * <p>
      * 通过添加窗口FLAG的方式设置页面使用刘海区显示
@@ -92,6 +77,7 @@ public class XiaomiNotchUtils {
      * @param window 应用页面window对象
      */
     public static void setFullScreenWindowLayoutInDisplayCutout(Window window) {
+        // 竖屏绘制到耳朵区
         int flag = FLAG_NOTCH_SUPPORT | FLAG_NOTCH_PORTRAIT;
         try {
             Method method = Window.class.getMethod("addExtraFlags",
